@@ -1,0 +1,23 @@
+name: Dispatch To Repository
+
+on:
+  push:
+    tags:
+      - "*"
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: ["s4ppq/repository.stremhu"]
+    steps:
+      - name: Push to repository
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: ${{ matrix.repo }}
+          event-type: update
+          client-payload: >-
+            {"ref":"${{ github.ref }}","sha":"${{ github.sha }}","module":"s4pp1/plugin.video.stremhu","tag":"${{ github.ref_name }}"}
