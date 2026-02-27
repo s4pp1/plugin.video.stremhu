@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.stremhu\n"
+"POT-Creation-Date: 2026-02-23 00:00+0000\n"
+"PO-Revision-Date: 2026-02-23 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu_HU\n"
+
+msgctxt "#30013"
+msgid "Source URL (with token)"
+msgstr "Source URL (tokennel)"
+
+msgctxt "#30020"
+msgid "Settings"
+msgstr "Beállítások"
+
+msgctxt "#30024"
+msgid "Source streams URL template"
+msgstr "Source stream URL sablon"
+
+msgctxt "#30025"
+msgid "Network"
+msgstr "Hálózat"
+
+msgctxt "#30026"
+msgid "HTTP timeout (seconds)"
+msgstr "HTTP timeout (másodperc)"
+
+msgctxt "#30032"
+msgid "Select stream"
+msgstr "Stream kiválasztása"
+
+msgctxt "#30040"
+msgid "Missing required setting"
+msgstr "Hiányzó kötelező beállítás"
+
+msgctxt "#30041"
+msgid "Stream"
+msgstr "Stream"
+
+msgctxt "#30043"
+msgid "No torrent found for this media."
+msgstr "Nem található torrent a médiához."
+
+msgctxt "#30060"
+msgid "Resolver addon: call this plugin from another addon/player rule."
+msgstr "Resolver addon: hívd ezt a plugint egy másik addon/player szabályból."
+
+msgctxt "#30071"
+msgid "Reinstall TMDB Helper player rule"
+msgstr "TMDB Helper player szabály újratelepítése"
+
+msgctxt "#30072"
+msgid "TMDB Helper player rule installed."
+msgstr "TMDB Helper player szabály telepítve."
+
+msgctxt "#30073"
+msgid "TMDB Helper player rule already installed."
+msgstr "A TMDB Helper player szabály már telepítve van."
+
+msgctxt "#30074"
+msgid "TMDB Helper player rule install failed."
+msgstr "Nem sikerült telepíteni a TMDB Helper player szabályt."
+
+msgctxt "#30075"
+msgid "TMDB Helper is not installed."
+msgstr "A TMDB Helper nincs telepítve."

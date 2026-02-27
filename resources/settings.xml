@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+  <category label="30020">
+    <setting id="source_url" type="text" label="30013" default="" />
+    <setting id="install_tmdb_player_rule" type="action" label="30071" action="RunPlugin(plugin://plugin.video.stremhu/install_player)" option="close" />
+  </category>
+</settings>

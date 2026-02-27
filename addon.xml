@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.stremhu"
+       name="StremHU"
+       version="0.1.0"
+       provider-name="StremHU">
+
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+    <import addon="plugin.video.themoviedb.helper" version="5.0.0"/>
+    <import addon="script.module.requests" version="2.9.1"/>
+    <import addon="script.module.routing" version="0.2.3+matrix.1"/>
+  </requires>
+
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="hu_HU">Resolver/player addon a StremHU streamekhez.</summary>
+    <description lang="hu_HU">A smart movie/episode route-okat kezeli, lekéri a streameket, majd választás után elindítja a lejátszást.</description>
+    <summary lang="en_GB">Resolver/player addon for StremHU streams.</summary>
+    <description lang="en_GB">Processes smart movie/episode routes, loads streams, and starts playback after user selection.</description>
+    <platform>all</platform>
+    <license>GPL-3.0-or-later</license>
+    <source>https://github.com/s4pp1/stremhu-source</source>
+  </extension>
+</addon>

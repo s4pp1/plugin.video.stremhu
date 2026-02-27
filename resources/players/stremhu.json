@@ -1,0 +1,12 @@
+{
+  "name": "StremHU Source",
+  "plugin": "plugin.video.stremhu",
+  "priority": 1,
+  "is_resolvable": "true",
+  "assert": {
+    "play_movie": ["imdb", "clearname"],
+    "play_episode": ["imdb", "clearname", "season", "episode"]
+  },
+  "play_movie": "plugin://plugin.video.stremhu/source/imdb/{imdb}?title={clearname_url}",
+  "play_episode": "plugin://plugin.video.stremhu/source/imdb/{imdb}?title={clearname_url}&season={season}&episode={episode}"
+}

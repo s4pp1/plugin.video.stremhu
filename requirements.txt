@@ -1,0 +1,3 @@
+kodistubs==21.0.0
+requests>=2.31,<3
+datamodel-code-generator[http]==0.54.0

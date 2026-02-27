@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.stremhu\n"
+"POT-Creation-Date: 2026-02-23 00:00+0000\n"
+"PO-Revision-Date: 2026-02-23 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+
+msgctxt "#30013"
+msgid "Source URL (with token)"
+msgstr "Source URL (with token)"
+
+msgctxt "#30020"
+msgid "Settings"
+msgstr "Settings"
+
+msgctxt "#30024"
+msgid "Source streams URL template"
+msgstr "Source streams URL template"
+
+msgctxt "#30025"
+msgid "Network"
+msgstr "Network"
+
+msgctxt "#30026"
+msgid "HTTP timeout (seconds)"
+msgstr "HTTP timeout (seconds)"
+
+msgctxt "#30032"
+msgid "Select stream"
+msgstr "Select stream"
+
+msgctxt "#30040"
+msgid "Missing required setting"
+msgstr "Missing required setting"
+
+msgctxt "#30041"
+msgid "Stream"
+msgstr "Stream"
+
+msgctxt "#30043"
+msgid "No torrent found for this media."
+msgstr "No torrent found for this media."
+
+msgctxt "#30060"
+msgid "Resolver addon: call this plugin from another addon/player rule."
+msgstr "Resolver addon: call this plugin from another addon/player rule."
+
+msgctxt "#30071"
+msgid "Reinstall TMDB Helper player rule"
+msgstr "Reinstall TMDB Helper player rule"
+
+msgctxt "#30072"
+msgid "TMDB Helper player rule installed."
+msgstr "TMDB Helper player rule installed."
+
+msgctxt "#30073"
+msgid "TMDB Helper player rule already installed."
+msgstr "TMDB Helper player rule already installed."
+
+msgctxt "#30074"
+msgid "TMDB Helper player rule install failed."
+msgstr "TMDB Helper player rule install failed."
+
+msgctxt "#30075"
+msgid "TMDB Helper is not installed."
+msgstr "TMDB Helper is not installed."
