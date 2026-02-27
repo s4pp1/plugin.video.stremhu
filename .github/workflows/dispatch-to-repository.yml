@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        repo: ["s4ppq/repository.stremhu"]
+        repo: ["s4pp1/repository.stremhu"]
     steps:
       - name: Push to repository
         uses: peter-evans/repository-dispatch@v3
