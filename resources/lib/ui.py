@@ -12,14 +12,18 @@ from .errors import ApiError
 from .models.stremhu_source_models import KodiImdbStreamDto
 
 
-def resolve_stream_icon(stream: KodiImdbStreamDto) -> str:
+def resolve_resolution_icon(
+    stream: KodiImdbStreamDto,
+) -> str:
     resolution = stream.resolution.value.value
-    icon_path = "{}/resources/media/{}.png".format(
+    icon_path = "{}/resources/media/resulution/{}.png".format(
         ADDON.getAddonInfo("path"),
         resolution,
     )
+
     if xbmcvfs.exists(icon_path):
         return icon_path
+
     return ADDON.getAddonInfo("icon")
 
 
@@ -64,7 +68,7 @@ def choose_stream_and_play(
     title: str,
 ):
     try:
-        streams = fetch_streams(
+        response = fetch_streams(
             media_type=media_type,
             content_id=content_id,
         )
@@ -72,29 +76,38 @@ def choose_stream_and_play(
         log(str(exc), xbmc.LOGERROR)
         notification(str(exc), error=True)
         xbmcplugin.setResolvedUrl(
-            PLUGIN.handle,
-            False,
-            xbmcgui.ListItem(),
+            handle=PLUGIN.handle,
+            succeeded=False,
+            listitem=xbmcgui.ListItem(),
         )
         return
 
-    if not streams:
+    if response.errors:
+        notification(
+            message=" ,".join(response.errors),
+            error=True,
+        )
+
+    if not response.streams:
         xbmcgui.Dialog().ok(loc(30032), loc(30043))
         xbmcplugin.setResolvedUrl(
-            PLUGIN.handle,
-            False,
-            xbmcgui.ListItem(),
+            handle=PLUGIN.handle,
+            succeeded=False,
+            listitem=xbmcgui.ListItem(),
         )
         return
 
-    items: List[xbmcgui.ListItem] = []
-    for stream in streams:
-        icon = resolve_stream_icon(stream)
+    items: List[str | xbmcgui.ListItem] = []
+
+    for stream in response.streams:
+        icon = resolve_resolution_icon(stream)
+
         li = xbmcgui.ListItem(
             label=build_stream_label(stream),
+            label2=build_stream_label2(stream),
         )
-        li.setLabel2(build_stream_label2(stream))
         li.setArt({"icon": icon, "thumb": icon})
+
         items.append(li)
 
     heading = loc(30032)
@@ -105,11 +118,19 @@ def choose_stream_and_play(
     )
 
     if selected_index < 0:
-        xbmcplugin.setResolvedUrl(PLUGIN.handle, False, xbmcgui.ListItem())
+        xbmcplugin.setResolvedUrl(
+            handle=PLUGIN.handle,
+            succeeded=False,
+            listitem=xbmcgui.ListItem(),
+        )
         return
 
-    selected_stream = streams[selected_index]
+    selected_stream = response.streams[selected_index]
     play_item = xbmcgui.ListItem(path=selected_stream.url)
     play_item.setProperty("IsPlayable", "true")
     play_item.setInfo("video", {"title": title or selected_stream.torrentName})
-    xbmcplugin.setResolvedUrl(PLUGIN.handle, True, play_item)
+    xbmcplugin.setResolvedUrl(
+        handle=PLUGIN.handle,
+        succeeded=True,
+        listitem=play_item,
+    )

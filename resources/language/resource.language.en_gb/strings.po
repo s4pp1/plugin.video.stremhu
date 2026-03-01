@@ -10,13 +10,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en_GB\n"
 
-msgctxt "#30013"
-msgid "Source URL (with token)"
-msgstr "Source URL (with token)"
+#  Settings
+msgctxt "#30000"
+msgid "General"
+msgstr ""
 
-msgctxt "#30020"
-msgid "Settings"
-msgstr "Settings"
+msgctxt "#30100"
+msgid "StremHU Source configuration"
+msgstr ""
+
+msgctxt "#30110"
+msgid "URL"
+msgstr ""
+
+msgctxt "#30111"
+msgid "StremHU Source Kodi integration URL, which you can copy from the interface."
+msgstr ""
+
+msgctxt "#30200"
+msgid "Install StremHU player"
+msgstr ""
+
+msgctxt "#30210"
+msgid "to TMDb Helper"
+msgstr ""
+
+msgctxt "#30211"
+msgid "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
+msgstr ""
+
+msgctxt "#30220"
+msgid "to TMDb Bingie Helper"
+msgstr ""
 
 msgctxt "#30024"
 msgid "Source streams URL template"

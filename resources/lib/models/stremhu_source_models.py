@@ -8,10 +8,10 @@ from enum import Enum
 
 
 class TrackerEnum(Enum):
-    ncore = 'ncore'
-    bithumen = 'bithumen'
-    majomparade = 'majomparade'
-    insane = 'insane'
+    ncore = "ncore"
+    bithumen = "bithumen"
+    majomparade = "majomparade"
+    insane = "insane"
 
 
 @dataclass
@@ -24,8 +24,8 @@ class TrackerMetaDto:
 
 
 class LanguageEnum(Enum):
-    hu = 'hu'
-    en = 'en'
+    hu = "hu"
+    en = "en"
 
 
 @dataclass
@@ -35,12 +35,12 @@ class LanguageMetaDto:
 
 
 class ResolutionEnum(Enum):
-    field_2160p = '2160p'
-    field_1080p = '1080p'
-    field_720p = '720p'
-    field_576p = '576p'
-    field_540p = '540p'
-    field_480p = '480p'
+    field_2160p = "2160p"
+    field_1080p = "1080p"
+    field_720p = "720p"
+    field_576p = "576p"
+    field_540p = "540p"
+    field_480p = "480p"
 
 
 @dataclass
@@ -50,11 +50,11 @@ class ResolutionMetaDto:
 
 
 class VideoQualityEnum(Enum):
-    dolby_vision = 'dolby-vision'
-    hdr10_ = 'hdr10+'
-    hdr10 = 'hdr10'
-    hlg = 'hlg'
-    sdr = 'sdr'
+    dolby_vision = "dolby-vision"
+    hdr10_ = "hdr10+"
+    hdr10 = "hdr10"
+    hlg = "hlg"
+    sdr = "sdr"
 
 
 @dataclass
@@ -64,13 +64,13 @@ class VideoQualityMetaDto:
 
 
 class AudioQualityEnum(Enum):
-    truehd = 'truehd'
-    dts_hd_ma = 'dts-hd-ma'
-    ddp = 'ddp'
-    dts = 'dts'
-    dd = 'dd'
-    aac = 'aac'
-    unknown = 'unknown'
+    truehd = "truehd"
+    dts_hd_ma = "dts-hd-ma"
+    ddp = "ddp"
+    dts = "dts"
+    dd = "dd"
+    aac = "aac"
+    unknown = "unknown"
 
 
 @dataclass
@@ -80,8 +80,8 @@ class AudioQualityMetaDto:
 
 
 class AudioSpatialEnum(Enum):
-    dolby_atmos = 'dolby-atmos'
-    dts_x = 'dts-x'
+    dolby_atmos = "dolby-atmos"
+    dts_x = "dts-x"
 
 
 @dataclass
@@ -91,13 +91,13 @@ class AudioSpatialMetaDto:
 
 
 class SourceEnum(Enum):
-    disc_remux = 'disc-remux'
-    disc_rip = 'disc-rip'
-    web_dl = 'web-dl'
-    web_rip = 'web-rip'
-    broadcast = 'broadcast'
-    theatrical = 'theatrical'
-    unknown = 'unknown'
+    disc_remux = "disc-remux"
+    disc_rip = "disc-rip"
+    web_dl = "web-dl"
+    web_rip = "web-rip"
+    broadcast = "broadcast"
+    theatrical = "theatrical"
+    unknown = "unknown"
 
 
 @dataclass

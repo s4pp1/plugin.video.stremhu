@@ -4,7 +4,7 @@ import requests
 
 from .common import get_setting, resolve_timeout_seconds
 from .errors import ApiError
-from .models.stremhu_source_models import KodiImdbStreamDto
+from .models.stremhu_source_models import KodiImdbStreamsDto
 from .parsers import parse_streams_response
 
 
@@ -63,11 +63,11 @@ def build_streams_url(media_type: str, content_id: str) -> str:
 def fetch_streams(
     media_type: str,
     content_id: str,
-) -> list[KodiImdbStreamDto]:
+) -> KodiImdbStreamsDto:
     url = build_streams_url(media_type=media_type, content_id=content_id)
     data = request_json(url)
     try:
         payload = parse_streams_response(data)
-        return payload.streams
+        return payload
     except (KeyError, TypeError, ValueError):
         raise ApiError("Invalid response format")

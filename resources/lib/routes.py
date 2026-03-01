@@ -40,11 +40,10 @@ def root():
     end_directory_if_needed()
 
 
-@PLUGIN.route("/install_player")
-def install_player():
+@PLUGIN.route("/settings/player/install/<plugin_id>")
+def install_player(plugin_id: str | None):
     install_tmdb_helper_player_rule(
-        force=True,
-        show_feedback=True,
+        plugin_id=plugin_id,
     )
     end_directory_if_needed()
 
@@ -95,5 +94,4 @@ def play_imdb(imdb: str | None):
 
 
 def run():
-    install_tmdb_helper_player_rule()
     PLUGIN.run()

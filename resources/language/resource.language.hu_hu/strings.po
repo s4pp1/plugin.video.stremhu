@@ -10,13 +10,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hu_HU\n"
 
-msgctxt "#30013"
-msgid "Source URL (with token)"
-msgstr "Source URL (tokennel)"
+#  Settings
+msgctxt "#30000"
+msgid "General"
+msgstr "Általános"
 
-msgctxt "#30020"
-msgid "Settings"
-msgstr "Beállítások"
+msgctxt "#30100"
+msgid "StremHU Source configuration"
+msgstr "StremHU Source kofigurálása"
+
+msgctxt "#30110"
+msgid "URL"
+msgstr "URL"
+
+msgctxt "#30111"
+msgid "StremHU Source Kodi integration URL, which you can copy from the interface."
+msgstr "StremHU Source Kodi integrációs URL, amit a felületről tudsz kimásolni."
+
+msgctxt "#30200"
+msgid "Install StremHU player"
+msgstr "StremHU lejátszó telepítése"
+
+msgctxt "#30210"
+msgid "to TMDb Helper"
+msgstr "a TMDb Helper-be"
+
+msgctxt "#30211"
+msgid "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
+msgstr "A StremHU használatához telepíteni kell a lejátszót a helper-be, hogy a film/sorozat indításánál megjelenjen, mint választható lejetőség."
+
+msgctxt "#30220"
+msgid "to TMDb Bingie Helper"
+msgstr "a TMDb Bingie Helper-be"
 
 msgctxt "#30024"
 msgid "Source streams URL template"

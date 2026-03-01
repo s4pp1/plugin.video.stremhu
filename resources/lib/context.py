@@ -7,3 +7,4 @@ PLUGIN = routing.Plugin()
 
 PLAYER_RULE_FILENAME = "stremhu.json"
 TMDB_HELPER_ID = "plugin.video.themoviedb.helper"
+TMDB_BINGIE_HELPER_ID = "plugin.video.tmdb.bingie.helper"
