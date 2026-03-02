@@ -67,9 +67,13 @@ msgctxt "#30041"
 msgid "Stream"
 msgstr "Stream"
 
+msgctxt "#30042"
+msgid "No torrent available"
+msgstr "Nincs elérhető torrent"
+
 msgctxt "#30043"
-msgid "No torrent found for this media."
-msgstr "Nem található torrent a médiához."
+msgid "No torrents are available for this content, or there are no results matching your configured StremHU Source preferences."
+msgstr "Nincs elérhető torrent ehhez a tartalomhoz, vagy nincs találat a beállított StremHU Source preferenciáid alapján."
 
 msgctxt "#30060"
 msgid "Resolver addon: call this plugin from another addon/player rule."

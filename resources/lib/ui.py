@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, List
 
 import xbmc
@@ -89,7 +91,10 @@ def choose_stream_and_play(
         )
 
     if not response.streams:
-        xbmcgui.Dialog().ok(loc(30032), loc(30043))
+        xbmcgui.Dialog().ok(
+            heading=loc(30042),
+            message=loc(30043),
+        )
         xbmcplugin.setResolvedUrl(
             handle=PLUGIN.handle,
             succeeded=False,

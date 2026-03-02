@@ -10,7 +10,7 @@ OUTPUT_PATH="${PROJECT_ROOT}/${OUTPUT_FILE}"
 
 if ! python3 -m datamodel_code_generator --version >/dev/null 2>&1; then
   echo "A datamodel-code-generator nincs telepitve. Telepites:" >&2
-  echo "python3 -m pip install --user datamodel-code-generator" >&2
+  echo "python3 -m pip install --user 'datamodel-code-generator[http]==0.27.3'" >&2
   exit 1
 fi
 
@@ -20,9 +20,9 @@ python3 -m datamodel_code_generator \
   --url "${SPEC_URL}" \
   --input-file-type openapi \
   --output "${OUTPUT_PATH}" \
+  --target-python-version 3.8 \
   --output-model-type dataclasses.dataclass \
   --disable-timestamp \
-  --formatters black isort \
   --reuse-model
 
 echo "Modellek generalva: ${OUTPUT_FILE}"

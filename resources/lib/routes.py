@@ -1,3 +1,5 @@
+from typing import Optional
+
 import xbmcgui
 import xbmcplugin
 
@@ -13,14 +15,14 @@ from .player_rule import install_tmdb_helper_player_rule
 from .ui import choose_stream_and_play
 
 
-def decode_route_label(value: str | None) -> str | None:
+def decode_route_label(value: Optional[str]) -> Optional[str]:
     if not value:
         return None
     value = str(value).strip()
     return value or None
 
 
-def get_query_arg(name: str) -> str | None:
+def get_query_arg(name: str) -> Optional[str]:
     values = getattr(PLUGIN, "args", {}).get(name) or []
     if not values:
         return None
@@ -41,7 +43,7 @@ def root():
 
 
 @PLUGIN.route("/settings/player/install/<plugin_id>")
-def install_player(plugin_id: str | None):
+def install_player(plugin_id: Optional[str]):
     install_tmdb_helper_player_rule(
         plugin_id=plugin_id,
     )
@@ -49,7 +51,7 @@ def install_player(plugin_id: str | None):
 
 
 @PLUGIN.route("/source/imdb/<imdb>")
-def play_imdb(imdb: str | None):
+def play_imdb(imdb: Optional[str]):
     if not ensure_settings() or not imdb:
         xbmcplugin.setResolvedUrl(
             PLUGIN.handle,

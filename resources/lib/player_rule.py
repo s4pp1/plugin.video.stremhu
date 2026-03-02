@@ -1,3 +1,5 @@
+from typing import Optional
+
 import xbmc
 import xbmcvfs
 
@@ -6,7 +8,7 @@ from .context import ADDON, PLAYER_RULE_FILENAME, TMDB_BINGIE_HELPER_ID, TMDB_HE
 
 
 def install_tmdb_helper_player_rule(
-    plugin_id: str | None = None,
+    plugin_id: Optional[str] = None,
 ):
     if plugin_id not in (TMDB_HELPER_ID, TMDB_BINGIE_HELPER_ID):
         notification(

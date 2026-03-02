@@ -61,15 +61,19 @@ msgstr "Select stream"
 
 msgctxt "#30040"
 msgid "Missing required setting"
-msgstr "Missing required setting"
+msgstr ""
 
 msgctxt "#30041"
 msgid "Stream"
-msgstr "Stream"
+msgstr ""
+
+msgctxt "#30042"
+msgid "No torrent available"
+msgstr ""
 
 msgctxt "#30043"
-msgid "No torrent found for this media."
-msgstr "No torrent found for this media."
+msgid "No torrents are available for this content, or there are no results matching your configured StremHU Source preferences."
+msgstr ""
 
 msgctxt "#30060"
 msgid "Resolver addon: call this plugin from another addon/player rule."

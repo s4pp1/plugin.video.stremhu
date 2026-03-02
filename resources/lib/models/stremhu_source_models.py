@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from typing import List, Optional
 
 
 class TrackerEnum(Enum):
@@ -113,16 +114,16 @@ class KodiImdbStreamDto:
     seeders: int
     size: str
     tracker: TrackerMetaDto
-    languages: list[LanguageMetaDto]
+    languages: List[LanguageMetaDto]
     resolution: ResolutionMetaDto
-    videoQualities: list[VideoQualityMetaDto]
+    videoQualities: List[VideoQualityMetaDto]
     source: SourceMetaDto
     url: str
-    audioQuality: AudioQualityMetaDto | None = None
-    audioSpatial: AudioSpatialMetaDto | None = None
+    audioQuality: Optional[AudioQualityMetaDto] = None
+    audioSpatial: Optional[AudioSpatialMetaDto] = None
 
 
 @dataclass
 class KodiImdbStreamsDto:
-    streams: list[KodiImdbStreamDto]
-    errors: list[str]
+    streams: List[KodiImdbStreamDto]
+    errors: List[str]
