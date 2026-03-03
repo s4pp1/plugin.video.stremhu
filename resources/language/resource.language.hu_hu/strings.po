@@ -17,7 +17,7 @@ msgstr "Általános"
 
 msgctxt "#30100"
 msgid "StremHU Source configuration"
-msgstr "StremHU Source kofigurálása"
+msgstr "StremHU Source konfigurálása"
 
 msgctxt "#30110"
 msgid "URL"
