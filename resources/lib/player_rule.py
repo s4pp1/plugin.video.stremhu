@@ -12,7 +12,7 @@ def install_tmdb_helper_player_rule(
 ):
     if plugin_id not in (TMDB_HELPER_ID, TMDB_BINGIE_HELPER_ID):
         notification(
-            message="A Plugin ID megadása kötelező!",
+            message=loc(30076),
             error=True,
         )
         return False

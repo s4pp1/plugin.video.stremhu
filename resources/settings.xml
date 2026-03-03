@@ -19,14 +19,14 @@
           <level>0</level>
           <data>RunPlugin(plugin://plugin.video.stremhu/settings/player/install/plugin.video.themoviedb.helper)</data>
           <control type="button" format="action">
-            <close>true</close>
+            <close>false</close>
           </control>
         </setting>
         <setting id="install_tmdb_bingie_helper_player" type="action" label="30220" help="30211">
           <level>0</level>
           <data>RunPlugin(plugin://plugin.video.stremhu/settings/player/install/plugin.video.tmdb.bingie.helper)</data>
           <control type="button" format="action">
-            <close>true</close>
+            <close>false</close>
           </control>
         </setting>
       </group>

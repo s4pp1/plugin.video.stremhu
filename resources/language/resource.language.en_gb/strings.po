@@ -13,47 +13,35 @@ msgstr ""
 #  Settings
 msgctxt "#30000"
 msgid "General"
-msgstr ""
+msgstr "General"
 
 msgctxt "#30100"
 msgid "StremHU Source configuration"
-msgstr ""
+msgstr "StremHU Source configuration"
 
 msgctxt "#30110"
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgctxt "#30111"
 msgid "StremHU Source Kodi integration URL, which you can copy from the interface."
-msgstr ""
+msgstr "StremHU Source Kodi integration URL, which you can copy from the interface."
 
 msgctxt "#30200"
 msgid "Install StremHU player"
-msgstr ""
+msgstr "Install StremHU player"
 
 msgctxt "#30210"
 msgid "to TMDb Helper"
-msgstr ""
+msgstr "to TMDb Helper"
 
 msgctxt "#30211"
 msgid "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
-msgstr ""
+msgstr "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
 
 msgctxt "#30220"
 msgid "to TMDb Bingie Helper"
-msgstr ""
-
-msgctxt "#30024"
-msgid "Source streams URL template"
-msgstr "Source streams URL template"
-
-msgctxt "#30025"
-msgid "Network"
-msgstr "Network"
-
-msgctxt "#30026"
-msgid "HTTP timeout (seconds)"
-msgstr "HTTP timeout (seconds)"
+msgstr "to TMDb Bingie Helper"
 
 msgctxt "#30032"
 msgid "Select stream"
@@ -61,35 +49,23 @@ msgstr "Select stream"
 
 msgctxt "#30040"
 msgid "Missing required setting"
-msgstr ""
-
-msgctxt "#30041"
-msgid "Stream"
-msgstr ""
+msgstr "Missing required setting"
 
 msgctxt "#30042"
 msgid "No torrent available"
-msgstr ""
+msgstr "No torrent available"
 
 msgctxt "#30043"
 msgid "No torrents are available for this content, or there are no results matching your configured StremHU Source preferences."
-msgstr ""
+msgstr "No torrents are available for this content, or there are no results matching your configured StremHU Source preferences."
 
 msgctxt "#30060"
 msgid "Resolver addon: call this plugin from another addon/player rule."
 msgstr "Resolver addon: call this plugin from another addon/player rule."
 
-msgctxt "#30071"
-msgid "Reinstall TMDB Helper player rule"
-msgstr "Reinstall TMDB Helper player rule"
-
 msgctxt "#30072"
 msgid "TMDB Helper player rule installed."
 msgstr "TMDB Helper player rule installed."
-
-msgctxt "#30073"
-msgid "TMDB Helper player rule already installed."
-msgstr "TMDB Helper player rule already installed."
 
 msgctxt "#30074"
 msgid "TMDB Helper player rule install failed."
@@ -98,3 +74,7 @@ msgstr "TMDB Helper player rule install failed."
 msgctxt "#30075"
 msgid "TMDB Helper is not installed."
 msgstr "TMDB Helper is not installed."
+
+msgctxt "#30076"
+msgid "Plugin ID is required."
+msgstr "Plugin ID is required."

@@ -61,7 +61,7 @@ def ensure_settings():
     source_url = get_setting("source_url")
 
     if not source_url:
-        missing.append(loc(30013))
+        missing.append(loc(30110))
 
     if missing:
         message = "{}: {}".format(loc(30040), ", ".join(missing))

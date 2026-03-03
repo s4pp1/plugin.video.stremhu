@@ -17,7 +17,7 @@ msgstr "Általános"
 
 msgctxt "#30100"
 msgid "StremHU Source configuration"
-msgstr "StremHU Source konfigurálása"
+msgstr "A StremHU Source beállításai"
 
 msgctxt "#30110"
 msgid "URL"
@@ -25,7 +25,7 @@ msgstr "URL"
 
 msgctxt "#30111"
 msgid "StremHU Source Kodi integration URL, which you can copy from the interface."
-msgstr "StremHU Source Kodi integrációs URL, amit a felületről tudsz kimásolni."
+msgstr "A StremHU Source Kodi-integrációs URL-je, amelyet a felületről másolhatsz ki."
 
 msgctxt "#30200"
 msgid "Install StremHU player"
@@ -33,27 +33,15 @@ msgstr "StremHU lejátszó telepítése"
 
 msgctxt "#30210"
 msgid "to TMDb Helper"
-msgstr "a TMDb Helper-be"
+msgstr "a TMDb Helperhez"
 
 msgctxt "#30211"
 msgid "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
-msgstr "A StremHU használatához telepíteni kell a lejátszót a helper-be, hogy a film/sorozat indításánál megjelenjen, mint választható lejetőség."
+msgstr "A StremHU használatához telepíteni kell a lejátszót a TMDb Helperbe / TMDb Bingie Helperbe, hogy film vagy sorozat indításakor választható lehetőségként jelenjen meg."
 
 msgctxt "#30220"
 msgid "to TMDb Bingie Helper"
-msgstr "a TMDb Bingie Helper-be"
-
-msgctxt "#30024"
-msgid "Source streams URL template"
-msgstr "Source stream URL sablon"
-
-msgctxt "#30025"
-msgid "Network"
-msgstr "Hálózat"
-
-msgctxt "#30026"
-msgid "HTTP timeout (seconds)"
-msgstr "HTTP timeout (másodperc)"
+msgstr "a TMDb Bingie Helperhez"
 
 msgctxt "#30032"
 msgid "Select stream"
@@ -63,38 +51,30 @@ msgctxt "#30040"
 msgid "Missing required setting"
 msgstr "Hiányzó kötelező beállítás"
 
-msgctxt "#30041"
-msgid "Stream"
-msgstr "Stream"
-
 msgctxt "#30042"
 msgid "No torrent available"
 msgstr "Nincs elérhető torrent"
 
 msgctxt "#30043"
 msgid "No torrents are available for this content, or there are no results matching your configured StremHU Source preferences."
-msgstr "Nincs elérhető torrent ehhez a tartalomhoz, vagy nincs találat a beállított StremHU Source preferenciáid alapján."
+msgstr "Ehhez a tartalomhoz nincs elérhető torrent, vagy nincs találat a StremHU Source beállításai alapján."
 
 msgctxt "#30060"
 msgid "Resolver addon: call this plugin from another addon/player rule."
-msgstr "Resolver addon: hívd ezt a plugint egy másik addon/player szabályból."
-
-msgctxt "#30071"
-msgid "Reinstall TMDB Helper player rule"
-msgstr "TMDB Helper player szabály újratelepítése"
+msgstr "Resolver kiegészítő: ezt a plugint egy másik kiegészítőből vagy lejátszószabályból hívd meg."
 
 msgctxt "#30072"
 msgid "TMDB Helper player rule installed."
-msgstr "TMDB Helper player szabály telepítve."
-
-msgctxt "#30073"
-msgid "TMDB Helper player rule already installed."
-msgstr "A TMDB Helper player szabály már telepítve van."
+msgstr "A TMDb Helper lejátszószabály telepítve."
 
 msgctxt "#30074"
 msgid "TMDB Helper player rule install failed."
-msgstr "Nem sikerült telepíteni a TMDB Helper player szabályt."
+msgstr "Nem sikerült telepíteni a TMDb Helper lejátszószabályát."
 
 msgctxt "#30075"
 msgid "TMDB Helper is not installed."
-msgstr "A TMDB Helper nincs telepítve."
+msgstr "A TMDb Helper nincs telepítve."
+
+msgctxt "#30076"
+msgid "Plugin ID is required."
+msgstr "A pluginazonosító megadása kötelező."
