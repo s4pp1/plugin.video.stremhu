@@ -2,23 +2,20 @@ from __future__ import annotations
 
 from typing import Any, List
 
-import xbmc
 import xbmcgui
 import xbmcplugin
 import xbmcvfs
 
-from .api import fetch_streams
-from .common import loc, log, notification
-from .context import ADDON, PLUGIN
-from .errors import ApiError
-from .models.stremhu_source_models import KodiImdbStreamDto
+from ...common import loc, notification
+from ...context import ADDON, PLUGIN
+from ...integrations.source.models import KodiImdbStreamDto, KodiImdbStreamsDto
 
 
 def resolve_resolution_icon(
     stream: KodiImdbStreamDto,
 ) -> str:
     resolution = stream.resolution.value.value
-    icon_path = "{}/resources/media/resulution/{}.png".format(
+    icon_path = "{}/resources/media/resolution/{}.png".format(
         ADDON.getAddonInfo("path"),
         resolution,
     )
@@ -65,32 +62,17 @@ def build_stream_label2(stream: KodiImdbStreamDto) -> str:
 
 
 def choose_stream_and_play(
-    media_type: str,
-    content_id: str,
     title: str,
+    stream_information: KodiImdbStreamsDto,
 ):
-    try:
-        response = fetch_streams(
-            media_type=media_type,
-            content_id=content_id,
-        )
-    except ApiError as exc:
-        log(str(exc), xbmc.LOGERROR)
-        notification(str(exc), error=True)
-        xbmcplugin.setResolvedUrl(
-            handle=PLUGIN.handle,
-            succeeded=False,
-            listitem=xbmcgui.ListItem(),
-        )
-        return
 
-    if response.errors:
+    if stream_information.errors:
         notification(
-            message=" ,".join(response.errors),
+            message=" ,".join(stream_information.errors),
             error=True,
         )
 
-    if not response.streams:
+    if not stream_information.streams:
         xbmcgui.Dialog().ok(
             heading=loc(30042),
             message=loc(30043),
@@ -104,7 +86,7 @@ def choose_stream_and_play(
 
     items: List[str | xbmcgui.ListItem] = []
 
-    for stream in response.streams:
+    for stream in stream_information.streams:
         icon = resolve_resolution_icon(stream)
 
         li = xbmcgui.ListItem(
@@ -130,7 +112,7 @@ def choose_stream_and_play(
         )
         return
 
-    selected_stream = response.streams[selected_index]
+    selected_stream = stream_information.streams[selected_index]
     play_item = xbmcgui.ListItem(path=selected_stream.url)
     play_item.setProperty("IsPlayable", "true")
     play_item.setInfo("video", {"title": title or selected_stream.torrentName})

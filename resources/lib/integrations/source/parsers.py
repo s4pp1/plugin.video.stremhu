@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from .models.stremhu_source_models import (
+from lib.common import log
+from lib.integrations.source.models import (
     AudioQualityEnum,
     AudioQualityMetaDto,
     AudioSpatialEnum,
@@ -68,56 +69,42 @@ def parse_tracker_meta(data: dict[str, Any]) -> TrackerMetaDto:
     return TrackerMetaDto(
         value=TrackerEnum(data["value"]),
         label=data["label"],
-        requiresFullDownload=bool(data["requiresFullDownload"]),
+        requiresFullDownload=data["requiresFullDownload"],
         url=data["url"],
         detailsPath=data["detailsPath"],
     )
 
 
 def parse_stream_item(data: dict[str, Any]) -> KodiImdbStreamDto:
-    languages = [parse_language_meta(raw) for raw in data["languages"]]
-    video_qualities = [parse_video_quality_meta(raw) for raw in data["videoQualities"]]
-    file_size_value = data.get("fileSize") or data.get("size") or ""
-
-    audio_quality_raw = data.get("audioQuality")
-    audio_spatial_raw = data.get("audioSpatial")
+    log("{}".format(data))
 
     return KodiImdbStreamDto(
         torrentName=data["torrentName"],
         fileName=data["fileName"],
         seeders=data["seeders"],
-        size=str(file_size_value),
+        size=data["size"],
         tracker=parse_tracker_meta(data["tracker"]),
-        languages=languages,
+        languages=[parse_language_meta(raw) for raw in data["languages"]],
         resolution=parse_resolution_meta(data["resolution"]),
-        videoQualities=video_qualities,
+        videoQualities=[
+            parse_video_quality_meta(raw) for raw in data["videoQualities"]
+        ],
         source=parse_source_meta(data["source"]),
         url=data["url"],
-        audioQuality=parse_audio_quality_meta(audio_quality_raw)
-        if audio_quality_raw is not None
+        audioQuality=parse_audio_quality_meta(data["audioQuality"])
+        if data.get("audioQuality") is not None
         else None,
-        audioSpatial=parse_audio_spatial_meta(audio_spatial_raw)
-        if audio_spatial_raw is not None
+        audioSpatial=parse_audio_spatial_meta(data["audioSpatial"])
+        if data.get("audioSpatial") is not None
         else None,
     )
 
 
 def parse_streams_response(data: Any) -> KodiImdbStreamsDto:
-    if isinstance(data, list):
-        streams_raw = data
-        errors_raw: list[Any] = []
-    else:
-        payload = data if isinstance(data, dict) else {}
-        streams_raw = (
-            payload.get("streams")
-            or payload.get("items")
-            or payload.get("results")
-            or payload.get("data")
-            or []
-        )
-        errors_raw = payload.get("errors") or []
+    if not isinstance(data, dict):
+        raise TypeError("Streams response must be an object")
 
     return KodiImdbStreamsDto(
-        streams=[parse_stream_item(raw) for raw in streams_raw],
-        errors=[str(item) for item in errors_raw],
+        streams=[parse_stream_item(raw) for raw in data["streams"]],
+        errors=data["errors"],
     )

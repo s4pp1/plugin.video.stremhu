@@ -13,6 +13,7 @@
   <extension point="xbmc.python.pluginsource" library="resources/plugin.py">
     <provides>video</provides>
   </extension>
+  <extension point="xbmc.service" library="resources/service.py" start="startup" />
 
   <extension point="xbmc.addon.metadata">
     <summary lang="hu_HU">StremHU</summary>

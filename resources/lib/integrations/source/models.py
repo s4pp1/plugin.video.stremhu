@@ -127,3 +127,9 @@ class KodiImdbStreamDto:
 class KodiImdbStreamsDto:
     streams: List[KodiImdbStreamDto]
     errors: List[str]
+
+
+@dataclass
+class StreamsParametersQuery:
+    season: Optional[int] = None
+    episode: Optional[int] = None

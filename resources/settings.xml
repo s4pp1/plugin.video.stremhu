@@ -14,7 +14,19 @@
           </control>
         </setting>
       </group>
-      <group id="2" label="30200">
+      <group id="2" label="30300">
+        <setting id="catalog_token" type="string" label="30310" help="30311">
+          <level>0</level>
+          <default/>
+          <constraints>
+            <allowempty>true</allowempty>
+          </constraints>
+          <control type="edit" format="string">
+            <heading>30310</heading>
+          </control>
+        </setting>
+      </group>
+      <group id="3" label="30200">
         <setting id="install_tmdb_helper_player" type="action" label="30210" help="30211">
           <level>0</level>
           <data>RunPlugin(plugin://plugin.video.stremhu/settings/player/install/plugin.video.themoviedb.helper)</data>

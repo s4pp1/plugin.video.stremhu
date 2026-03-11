@@ -1,3 +1,5 @@
+from typing import Optional
+
 import xbmc
 import xbmcgui
 import xbmcplugin
@@ -13,7 +15,7 @@ def log(
     msg: str,
     level=xbmc.LOGINFO,
 ):
-    message = "[{}] {}".format(ADDON_ID, msg)
+    message = f"[{ADDON_ID}] {msg}"
 
     xbmc.log(
         msg=message,
@@ -52,15 +54,26 @@ def parse_int(value):
         return None
 
 
-def resolve_timeout_seconds():
-    return 15
+def get_query_arg(name: str) -> Optional[str]:
+    values = getattr(PLUGIN, "args", {}).get(name) or []
+    if not values:
+        return None
+    value = values[0]
+    if value is None:
+        return None
+    value = str(value).strip()
+    return value or None
 
 
 def ensure_settings():
     missing = []
     source_url = get_setting("source_url")
+    catalog_token = get_setting("catalog_token")
 
     if not source_url:
+        missing.append(loc(30110))
+
+    if not catalog_token:
         missing.append(loc(30110))
 
     if missing:
@@ -69,11 +82,3 @@ def ensure_settings():
         return False
 
     return True
-
-
-def normalize_media_type(media_type):
-    if media_type == "movie":
-        return "movie"
-    if media_type in ("series", "episode"):
-        return "series"
-    return None

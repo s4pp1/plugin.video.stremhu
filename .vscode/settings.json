@@ -1,4 +1,6 @@
 {
+  "python.terminal.activateEnvironment": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
   "python.defaultInterpreterPath": "/opt/anaconda3/envs/kodi/bin/python",
   "python.analysis.typeCheckingMode": "standard",
   "editor.formatOnSave": true,
@@ -9,5 +11,6 @@
   "python-envs.defaultEnvManager": "ms-python.python:conda",
   "python-envs.defaultPackageManager": "ms-python.python:conda",
   "ruff.enable": true,
-  "python.analysis.autoImportCompletions": true
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.extraPaths": ["${workspaceFolder}/resources"]
 }

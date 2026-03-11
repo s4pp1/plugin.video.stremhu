@@ -1,0 +1,11 @@
+{
+  "name": "StremHU Catalog",
+  "icon": "special://home/addons/plugin.video.stremhu/icon.png",
+  "list": [
+    {
+      "name": "Katalógusok",
+      "icon": "special://home/addons/plugin.video.stremhu/icon.png",
+      "path": "plugin://plugin.video.stremhu/widget/catalogs?addon_id=plugin.video.themoviedb.helper"
+    }
+  ]
+}

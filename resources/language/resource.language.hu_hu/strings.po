@@ -17,7 +17,7 @@ msgstr "Általános"
 
 msgctxt "#30100"
 msgid "StremHU Source configuration"
-msgstr "A StremHU Source beállításai"
+msgstr "StremHU Source beállításai"
 
 msgctxt "#30110"
 msgid "URL"
@@ -42,6 +42,18 @@ msgstr "A StremHU használatához telepíteni kell a lejátszót a TMDb Helperbe
 msgctxt "#30220"
 msgid "to TMDb Bingie Helper"
 msgstr "a TMDb Bingie Helperhez"
+
+msgctxt "#30300"
+msgid "StremHU Catalog configuration"
+msgstr "StremHU Catalog beállításai"
+
+msgctxt "#30310"
+msgid "Token"
+msgstr "Token"
+
+msgctxt "#30311"
+msgid "StremHU Source Kodi integration URL, which you can copy from the interface."
+msgstr "StremHU Source Kodi integration URL, which you can copy from the interface."
 
 msgctxt "#30032"
 msgid "Select stream"
@@ -78,3 +90,15 @@ msgstr "A TMDb Helper nincs telepítve."
 msgctxt "#30076"
 msgid "Plugin ID is required."
 msgstr "A pluginazonosító megadása kötelező."
+
+msgctxt "#30061"
+msgid "No catalogs available."
+msgstr "Nincs elérhető katalógus."
+
+msgctxt "#30062"
+msgid "Catalog list URL is missing."
+msgstr "Hiányzik a katalógus lista URL-je."
+
+msgctxt "#30063"
+msgid "Catalog is empty."
+msgstr "A katalógus üres."

@@ -43,6 +43,18 @@ msgctxt "#30220"
 msgid "to TMDb Bingie Helper"
 msgstr "to TMDb Bingie Helper"
 
+msgctxt "#30300"
+msgid "StremHU Catalog configuration"
+msgstr "StremHU Catalog configuration"
+
+msgctxt "#30310"
+msgid "Token"
+msgstr "Token"
+
+msgctxt "#30311"
+msgid "StremHU Source Kodi integration URL, which you can copy from the interface."
+msgstr "StremHU Source Kodi integration URL, which you can copy from the interface."
+
 msgctxt "#30032"
 msgid "Select stream"
 msgstr "Select stream"
@@ -78,3 +90,15 @@ msgstr "TMDB Helper is not installed."
 msgctxt "#30076"
 msgid "Plugin ID is required."
 msgstr "Plugin ID is required."
+
+msgctxt "#30061"
+msgid "No catalogs available."
+msgstr "No catalogs available."
+
+msgctxt "#30062"
+msgid "Catalog list URL is missing."
+msgstr "Catalog list URL is missing."
+
+msgctxt "#30063"
+msgid "Catalog is empty."
+msgstr "Catalog is empty."

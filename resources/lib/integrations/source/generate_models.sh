@@ -23,6 +23,8 @@ python3 -m datamodel_code_generator \
   --target-python-version 3.8 \
   --output-model-type dataclasses.dataclass \
   --disable-timestamp \
-  --reuse-model
+  --reuse-model \
+  --openapi-scopes schemas parameters paths \
+  --use-operation-id-as-name
 
 echo "Modellek generalva: ${OUTPUT_FILE}"

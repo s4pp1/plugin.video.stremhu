@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate Source Models",
+      "type": "shell",
+      "command": "${workspaceFolder}/resources/lib/integrations/source/generate_models.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate Catalog Models",
+      "type": "shell",
+      "command": "${workspaceFolder}/resources/lib/integrations/catalog/generate_models.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
