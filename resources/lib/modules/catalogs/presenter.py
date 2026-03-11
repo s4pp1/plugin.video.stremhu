@@ -37,7 +37,7 @@ def render_widget_catalogs(
             }
         )
 
-        list_url = f"{STREMHU_CATALOG_URL}/api/{catalog_token}/kodi/catalogs/{catalog.id}/items"
+        list_url = f"{STREMHU_CATALOG_URL}/api/{catalog_token}/kodi/catalogs/{catalog.id}/mdblist"
         tmdb_url = f"plugin://{addon_id}/?info=mdblist_locallist&&{list_url}"
 
         xbmcplugin.addDirectoryItem(
