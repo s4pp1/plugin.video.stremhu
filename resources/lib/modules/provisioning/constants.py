@@ -2,6 +2,10 @@ from typing import List
 
 from lib.modules.provisioning.schemas import ProvisioningItem
 
+PROVISIONING_STATE_FILE = (
+    "special://profile/addon_data/plugin.video.stremhu/provisioning_state.json"
+)
+
 TMDB_HELPER_ID = "plugin.video.themoviedb.helper"
 TMDB_BINGIE_HELPER_ID = "plugin.video.tmdb.bingie.helper"
 

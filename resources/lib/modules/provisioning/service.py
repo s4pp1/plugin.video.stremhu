@@ -1,3 +1,4 @@
+import json
 from typing import List
 
 import xbmc
@@ -6,8 +7,11 @@ import xbmcvfs
 
 from lib.common import log, notification
 from lib.context import ADDON, TMDB_BINGIE_HELPER_ID, TMDB_HELPER_ID
-from lib.modules.provisioning.constants import ARTIFACT_INSTALL_PLAN
-from lib.modules.provisioning.schemas import ProvisioningItem
+from lib.modules.provisioning.constants import (
+    ARTIFACT_INSTALL_PLAN,
+    PROVISIONING_STATE_FILE,
+)
+from lib.modules.provisioning.schemas import ProvisioningItem, ProvisioningState
 
 
 def ensure_on_startup():
@@ -47,8 +51,11 @@ def install_artifact(
         f"{provisioning_item.target_dir}/{provisioning_item.artifact_filename}"
     )
 
+    installed_version = _get_installed_version(provisioning_item)
+
     if xbmcvfs.exists(target_path) and not force:
-        return True
+        if installed_version >= provisioning_item.version:
+            return True
 
     if xbmcvfs.exists(target_path) and force:
         xbmcvfs.delete(target_path)
@@ -62,6 +69,8 @@ def install_artifact(
         )
 
         return False
+
+    _set_installed_version(provisioning_item)
 
     notification(
         message="A StremHU addon kiegészítő telepítve!",
@@ -92,3 +101,41 @@ def _ensure_installed_helpers() -> List[str]:
     )
 
     return installed_helpers
+
+
+def _get_provisioning_state() -> ProvisioningState:
+    if not xbmcvfs.exists(PROVISIONING_STATE_FILE):
+        return ProvisioningState()
+
+    try:
+        with xbmcvfs.File(PROVISIONING_STATE_FILE) as f:
+            data = json.loads(f.read())
+            return ProvisioningState.from_dict(data)
+    except Exception:
+        return ProvisioningState()
+
+
+def _save_provisioning_state(state: ProvisioningState):
+    try:
+        with xbmcvfs.File(PROVISIONING_STATE_FILE, "w") as f:
+            f.write(json.dumps(state.to_dict(), indent=4))
+    except Exception as e:
+        log(f"Failed to save provisioning state: {e}", xbmc.LOGERROR)
+
+
+def _get_installed_version(provisioning_item: ProvisioningItem) -> int:
+    state = _get_provisioning_state()
+    return state.get_version(
+        addon_id=provisioning_item.addon_id,
+        artifact_filename=provisioning_item.artifact_filename,
+    )
+
+
+def _set_installed_version(provisioning_item: ProvisioningItem):
+    state = _get_provisioning_state()
+    state.set_version(
+        addon_id=provisioning_item.addon_id,
+        artifact_filename=provisioning_item.artifact_filename,
+        version=provisioning_item.version,
+    )
+    _save_provisioning_state(state)
