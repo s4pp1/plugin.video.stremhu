@@ -28,20 +28,24 @@ msgid "StremHU Source Kodi integration URL, which you can copy from the interfac
 msgstr "A StremHU Source Kodi-integrációs URL-je, amelyet a felületről másolhatsz ki."
 
 msgctxt "#30200"
-msgid "Install StremHU player"
-msgstr "StremHU lejátszó telepítése"
+msgid "Install StremHU artifacts"
+msgstr "StremHU kiegészítő telepítése"
 
 msgctxt "#30210"
 msgid "to TMDb Helper"
 msgstr "a TMDb Helperhez"
 
 msgctxt "#30211"
-msgid "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
-msgstr "A StremHU használatához telepíteni kell a lejátszót a TMDb Helperbe / TMDb Bingie Helperbe, hogy film vagy sorozat indításakor választható lehetőségként jelenjen meg."
+msgid "To use the StremHU addon, you need to install the artifacts for TMDb Helper."
+msgstr "A StremHU addon használatához telepíteni kell a kiegészítőt a TMDb Helperhez."
 
 msgctxt "#30220"
 msgid "to TMDb Bingie Helper"
 msgstr "a TMDb Bingie Helperhez"
+
+msgctxt "#30221"
+msgid "To use the StremHU addon, you need to install the artifacts for TMDb Bingie Helper."
+msgstr "A StremHU addon használatához telepíteni kell a kiegészítőt a TMDb Bingie Helperbe."
 
 msgctxt "#30300"
 msgid "StremHU Catalog configuration"

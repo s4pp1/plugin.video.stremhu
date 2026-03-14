@@ -17,9 +17,7 @@
 
   <extension point="xbmc.addon.metadata">
     <summary lang="hu_HU">StremHU</summary>
-    <description lang="hu_HU">Streamelj filmeket és sorozatokat közvetlenül magyar trackerekről a
-      StremHU segítségével. Az addon egy háttérszolgáltatáson keresztül működik, ezért csatlakoznia
-      kell egy futó StremHU Source-hoz (helyben vagy interneten keresztül).</description>
+    <description lang="hu_HU" xml:space="preserve">Streamelj filmeket és sorozatokat közvetlenül magyar trackerekről a StremHU segítségével. Az addon egy háttérszolgáltatáson keresztül működik, ezért csatlakoznia kell egy futó StremHU Source-hoz (helyben vagy interneten keresztül).</description>
     <platform>all</platform>
     <website>https://stremhu.app</website>
     <license>GPL-3.0-or-later</license>

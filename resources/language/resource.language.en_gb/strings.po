@@ -28,20 +28,24 @@ msgid "StremHU Source Kodi integration URL, which you can copy from the interfac
 msgstr "StremHU Source Kodi integration URL, which you can copy from the interface."
 
 msgctxt "#30200"
-msgid "Install StremHU player"
-msgstr "Install StremHU player"
+msgid "Install StremHU artifacts"
+msgstr "Install StremHU artifacts"
 
 msgctxt "#30210"
 msgid "to TMDb Helper"
 msgstr "to TMDb Helper"
 
 msgctxt "#30211"
-msgid "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
-msgstr "To use StremHU, you need to install the player in the helper so it appears as a selectable option when starting a movie or series"
+msgid "To use the StremHU addon, you need to install the artifacts for TMDb Helper."
+msgstr "To use the StremHU addon, you need to install the artifacts for TMDb Helper."
 
 msgctxt "#30220"
 msgid "to TMDb Bingie Helper"
 msgstr "to TMDb Bingie Helper"
+
+msgctxt "#30221"
+msgid "To use the StremHU addon, you need to install the artifacts for TMDb Bingie Helper."
+msgstr "To use the StremHU addon, you need to install the artifacts for TMDb Bingie Helper."
 
 msgctxt "#30300"
 msgid "StremHU Catalog configuration"

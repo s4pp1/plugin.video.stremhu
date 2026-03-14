@@ -3,6 +3,7 @@ from typing import List
 import xbmc
 import xbmcgui
 import xbmcvfs
+
 from lib.common import log, notification
 from lib.context import ADDON, TMDB_BINGIE_HELPER_ID, TMDB_HELPER_ID
 from lib.modules.provisioning.constants import ARTIFACT_INSTALL_PLAN
@@ -56,14 +57,14 @@ def install_artifact(
         log("Failed to copy player rule to {}".format(target_path), xbmc.LOGERROR)
 
         notification(
-            message="Hiba történt",
+            message="Hiba történt a kiegészítő telepítésekor!",
             error=True,
         )
 
         return False
 
     notification(
-        message="Sikeres telepítés",
+        message="A StremHU addon kiegészítő telepítve!",
     )
 
 
