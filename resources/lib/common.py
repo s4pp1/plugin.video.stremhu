@@ -7,10 +7,6 @@ import xbmcplugin
 from .context import ADDON, ADDON_ID, PLUGIN
 
 
-def loc(string_id: int):
-    return ADDON.getLocalizedString(string_id)
-
-
 def log(
     msg: str,
     level=xbmc.LOGINFO,
@@ -71,13 +67,13 @@ def ensure_settings():
     catalog_token = get_setting("catalog_token")
 
     if not source_url:
-        missing.append(loc(30110))
+        missing.append("URL")
 
     if not catalog_token:
-        missing.append(loc(30110))
+        missing.append("Token")
 
     if missing:
-        message = "{}: {}".format(loc(30040), ", ".join(missing))
+        message = "Hiányzó kötelező beállítás: {}".format(", ".join(missing))
         notification(message, error=True)
         return False
 

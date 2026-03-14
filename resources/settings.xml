@@ -5,7 +5,7 @@
       <group id="1" label="30100">
         <setting id="source_url" type="string" label="30110" help="30111">
           <level>0</level>
-          <default/>
+          <default />
           <constraints>
             <allowempty>true</allowempty>
           </constraints>
@@ -17,7 +17,7 @@
       <group id="2" label="30300">
         <setting id="catalog_token" type="string" label="30310" help="30311">
           <level>0</level>
-          <default/>
+          <default />
           <constraints>
             <allowempty>true</allowempty>
           </constraints>
@@ -29,14 +29,16 @@
       <group id="3" label="30200">
         <setting id="install_tmdb_helper_player" type="action" label="30210" help="30211">
           <level>0</level>
-          <data>RunPlugin(plugin://plugin.video.stremhu/settings/player/install/plugin.video.themoviedb.helper)</data>
+          <data>
+            RunPlugin(plugin://plugin.video.stremhu/settings/player/install/plugin.video.themoviedb.helper)</data>
           <control type="button" format="action">
             <close>false</close>
           </control>
         </setting>
         <setting id="install_tmdb_bingie_helper_player" type="action" label="30220" help="30211">
           <level>0</level>
-          <data>RunPlugin(plugin://plugin.video.stremhu/settings/player/install/plugin.video.tmdb.bingie.helper)</data>
+          <data>
+            RunPlugin(plugin://plugin.video.stremhu/settings/player/install/plugin.video.tmdb.bingie.helper)</data>
           <control type="button" format="action">
             <close>false</close>
           </control>

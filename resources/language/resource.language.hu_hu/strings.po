@@ -52,53 +52,5 @@ msgid "Token"
 msgstr "Token"
 
 msgctxt "#30311"
-msgid "StremHU Source Kodi integration URL, which you can copy from the interface."
-msgstr "StremHU Source Kodi integration URL, which you can copy from the interface."
-
-msgctxt "#30032"
-msgid "Select stream"
-msgstr "Stream kiválasztása"
-
-msgctxt "#30040"
-msgid "Missing required setting"
-msgstr "Hiányzó kötelező beállítás"
-
-msgctxt "#30042"
-msgid "No torrent available"
-msgstr "Nincs elérhető torrent"
-
-msgctxt "#30043"
-msgid "No torrents are available for this content, or there are no results matching your configured StremHU Source preferences."
-msgstr "Ehhez a tartalomhoz nincs elérhető torrent, vagy nincs találat a StremHU Source beállításai alapján."
-
-msgctxt "#30060"
-msgid "Resolver addon: call this plugin from another addon/player rule."
-msgstr "Resolver kiegészítő: ezt a plugint egy másik kiegészítőből vagy lejátszószabályból hívd meg."
-
-msgctxt "#30072"
-msgid "TMDB Helper player rule installed."
-msgstr "A TMDb Helper lejátszószabály telepítve."
-
-msgctxt "#30074"
-msgid "TMDB Helper player rule install failed."
-msgstr "Nem sikerült telepíteni a TMDb Helper lejátszószabályát."
-
-msgctxt "#30075"
-msgid "TMDB Helper is not installed."
-msgstr "A TMDb Helper nincs telepítve."
-
-msgctxt "#30076"
-msgid "Plugin ID is required."
-msgstr "A pluginazonosító megadása kötelező."
-
-msgctxt "#30061"
-msgid "No catalogs available."
-msgstr "Nincs elérhető katalógus."
-
-msgctxt "#30062"
-msgid "Catalog list URL is missing."
-msgstr "Hiányzik a katalógus lista URL-je."
-
-msgctxt "#30063"
-msgid "Catalog is empty."
-msgstr "A katalógus üres."
+msgid "StremHU Catalog token, which you can copy from the interface."
+msgstr "A StremHU Catalog tokenje, amelyet a felületről másolhatsz ki."

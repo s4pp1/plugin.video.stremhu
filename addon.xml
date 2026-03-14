@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.stremhu"
-       name="StremHU"
-       version="0.2.2"
-       provider-name="StremHU">
+  name="StremHU"
+  version="0.3.0"
+  provider-name="StremHU">
 
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
-    <import addon="script.module.requests" version="2.31.0"/>
-    <import addon="script.module.routing" version="0.2.3+matrix.1"/>
+    <import addon="script.module.requests" version="2.31.0" />
+    <import addon="script.module.routing" version="0.2.3+matrix.1" />
   </requires>
 
   <extension point="xbmc.python.pluginsource" library="resources/plugin.py">
@@ -17,12 +17,13 @@
 
   <extension point="xbmc.addon.metadata">
     <summary lang="hu_HU">StremHU</summary>
-    <description lang="hu_HU">Streamelj filmeket és sorozatokat közvetlenül magyar trackerekről a StremHU segítségével. Az addon egy háttérszolgáltatáson keresztül működik, ezért csatlakoznia kell egy futó StremHU Source-hoz (helyben vagy interneten keresztül).</description>
-    <summary lang="en_GB">StremHU</summary>
-    <description lang="en_GB">Stream movies and TV shows directly from Hungarian trackers with StremHU. The addon works through a background service, so it must connect to a running StremHU Source instance (locally or over the internet).</description>
+    <description lang="hu_HU">Streamelj filmeket és sorozatokat közvetlenül magyar trackerekről a
+      StremHU segítségével. Az addon egy háttérszolgáltatáson keresztül működik, ezért csatlakoznia
+      kell egy futó StremHU Source-hoz (helyben vagy interneten keresztül).</description>
     <platform>all</platform>
+    <website>https://stremhu.app</website>
     <license>GPL-3.0-or-later</license>
-    <source>https://github.com/s4pp1/stremhu-source</source>
+    <source>https://github.com/s4pp1/plugin.video.stremhu</source>
     <assets>
       <icon>icon.png</icon>
       <fanart>fanart.jpg</fanart>

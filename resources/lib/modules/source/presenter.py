@@ -6,7 +6,7 @@ import xbmcgui
 import xbmcplugin
 import xbmcvfs
 
-from ...common import loc, notification
+from ...common import notification
 from ...context import ADDON, PLUGIN
 from ...integrations.source.models import KodiImdbStreamDto, KodiImdbStreamsDto
 
@@ -74,8 +74,8 @@ def choose_stream_and_play(
 
     if not stream_information.streams:
         xbmcgui.Dialog().ok(
-            heading=loc(30042),
-            message=loc(30043),
+            heading="Nincs elérhető torrent",
+            message="Ehhez a tartalomhoz nincs elérhető torrent, vagy nincs találat a StremHU Source beállításai alapján.",
         )
         xbmcplugin.setResolvedUrl(
             handle=PLUGIN.handle,
@@ -97,7 +97,7 @@ def choose_stream_and_play(
 
         items.append(li)
 
-    heading = loc(30032)
+    heading = "Stream kiválasztása"
     selected_index = xbmcgui.Dialog().select(
         heading=heading,
         list=items,
@@ -115,7 +115,6 @@ def choose_stream_and_play(
     selected_stream = stream_information.streams[selected_index]
     play_item = xbmcgui.ListItem(path=selected_stream.url)
     play_item.setProperty("IsPlayable", "true")
-    play_item.setInfo("video", {"title": title or selected_stream.torrentName})
     xbmcplugin.setResolvedUrl(
         handle=PLUGIN.handle,
         succeeded=True,
