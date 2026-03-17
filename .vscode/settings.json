@@ -1,18 +1,15 @@
 {
   "python.terminal.activateEnvironment": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
-  "python.defaultInterpreterPath": "/opt/anaconda3/envs/kodi/bin/python",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit",
     "source.fixAll.ruff": "explicit"
   },
-  "python-envs.defaultEnvManager": "ms-python.python:conda",
-  "python-envs.defaultPackageManager": "ms-python.python:conda",
   "ruff.enable": true,
   "basedpyright.analysis.typeCheckingMode": "standard",
   "basedpyright.analysis.autoImportCompletions": true,
   "basedpyright.analysis.extraPaths": ["${workspaceFolder}/resources"],
-  "python.languageServer": "None",
-  "python.useEnvironmentsExtension": false
+  "python.defaultInterpreterPath": "${workspaceFolder}/.conda/bin/python",
+  "python.languageServer": "None"
 }
