@@ -13,13 +13,6 @@ class CatalogTypeEnum(Enum):
     manual = 'manual'
 
 
-@dataclass
-class CatalogAutoRulesDto:
-    itemsCount: int
-    streamingProviders: Optional[List[int]] = None
-    genres: Optional[List[int]] = None
-
-
 class CatalogVisibilityEnum(Enum):
     public = 'public'
     unlisted = 'unlisted'
@@ -43,7 +36,6 @@ class CatalogDto:
     title: str
     description: str
     type: CatalogTypeEnum
-    autoRules: CatalogAutoRulesDto
     visibility: CatalogVisibilityEnum
     status: CatalogStatusEnum
     mediaType: MediaTypeEnum
