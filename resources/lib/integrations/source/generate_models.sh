@@ -1,22 +1,26 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SPEC_URL="${1:-http://localhost:3000/api/docs/kodi-json}"
-OUTPUT_FILE="${2:-resources/lib/models/stremhu_source_models.py}"
+SPEC_URL="http://localhost:3000/api/docs/kodi-json"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
-OUTPUT_PATH="${PROJECT_ROOT}/${OUTPUT_FILE}"
+PROJECT_ROOT="${SCRIPT_DIR}"
+while [ ! -f "${PROJECT_ROOT}/environment.yaml" ] && [ "${PROJECT_ROOT}" != "/" ]; do
+  PROJECT_ROOT="$(dirname "${PROJECT_ROOT}")"
+done
+OUTPUT_PATH="${SCRIPT_DIR}/models.py"
+PYTHON_BIN="${PROJECT_ROOT}/.conda/bin/python"
 
-if ! python3 -m datamodel_code_generator --version >/dev/null 2>&1; then
-  echo "A datamodel-code-generator nincs telepitve. Telepites:" >&2
-  echo "python3 -m pip install --user 'datamodel-code-generator[http]==0.27.3'" >&2
+if [ ! -f "${PYTHON_BIN}" ]; then
+  echo "Hiba: A .conda környezet nem található a ${PROJECT_ROOT} könyvtárban." >&2
+  echo "Hozd létre a környezetet manuálisan:" >&2
+  echo "conda env create -p ./.conda -f environment.yaml" >&2
   exit 1
 fi
 
 mkdir -p "$(dirname "${OUTPUT_PATH}")"
 
-python3 -m datamodel_code_generator \
+"${PYTHON_BIN}" -m datamodel_code_generator \
   --url "${SPEC_URL}" \
   --input-file-type openapi \
   --output "${OUTPUT_PATH}" \
