@@ -7,11 +7,11 @@ import xbmcplugin
 
 from lib.common import get_setting
 from lib.context import ADDON, PLUGIN, STREMHU_CATALOG_URL
-from lib.integrations.catalog.models import CatalogDto, MediaTypeEnum
+from lib.integrations.catalog.models import PublicCatalogDto, MediaTypeEnum
 
 
 def render_widget_catalogs(
-    catalogs: List[CatalogDto],
+    catalogs: List[PublicCatalogDto],
     addon_id: str,
 ):
     if PLUGIN.handle < 0:

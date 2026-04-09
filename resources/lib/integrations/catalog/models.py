@@ -8,38 +8,17 @@ from enum import Enum
 from typing import List, Optional
 
 
-class CatalogTypeEnum(Enum):
-    auto = 'auto'
-    manual = 'manual'
-
-
-class CatalogVisibilityEnum(Enum):
-    public = 'public'
-    unlisted = 'unlisted'
-    private = 'private'
-
-
-class CatalogStatusEnum(Enum):
-    draft = 'draft'
-    published = 'published'
-    archived = 'archived'
-
-
 class MediaTypeEnum(Enum):
     movie = 'movie'
     series = 'series'
 
 
 @dataclass
-class CatalogDto:
+class PublicCatalogDto:
+    mediaType: MediaTypeEnum
     id: str
     title: str
     description: str
-    type: CatalogTypeEnum
-    visibility: CatalogVisibilityEnum
-    status: CatalogStatusEnum
-    mediaType: MediaTypeEnum
-    isOfficial: bool
     createdAt: str
     updatedAt: str
 
@@ -58,9 +37,9 @@ class Adult(Enum):
 
 @dataclass
 class KodiCatalogItemDto:
+    mediatype: KodiMediaTypeEnum
     id: float
     imdb_id: str
-    mediatype: KodiMediaTypeEnum
     rank: Optional[float] = None
     adult: Optional[Adult] = None
     title: Optional[str] = None
@@ -72,7 +51,7 @@ class KodiCatalogItemDto:
     episode: Optional[float] = None
 
 
-FindResponse = List[CatalogDto]
+KodiCatalogsFindResponse = List[PublicCatalogDto]
 
 
-FindResponse1 = List[KodiCatalogItemDto]
+KodiCatalogItemsFindResponse = List[KodiCatalogItemDto]

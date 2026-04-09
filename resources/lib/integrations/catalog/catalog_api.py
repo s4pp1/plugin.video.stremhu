@@ -3,11 +3,11 @@ from __future__ import annotations
 from typing import List
 
 from lib.integrations.catalog.common import catalog_request
-from lib.integrations.catalog.models import CatalogDto
+from lib.integrations.catalog.models import PublicCatalogDto
 from lib.integrations.catalog.parsers import parse_catalogs_response
 
 
-def get_catalogs() -> List[CatalogDto]:
+def get_catalogs() -> List[PublicCatalogDto]:
     path = "/catalogs"
 
     data = catalog_request(

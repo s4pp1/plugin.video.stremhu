@@ -3,30 +3,23 @@ from __future__ import annotations
 from typing import Any, List
 
 from lib.integrations.catalog.models import (
-    CatalogDto,
-    CatalogStatusEnum,
-    CatalogTypeEnum,
-    CatalogVisibilityEnum,
+    PublicCatalogDto,
     MediaTypeEnum,
 )
 
 
-def parse_catalog_item(data: dict[str, Any]) -> CatalogDto:
-    return CatalogDto(
+def parse_catalog_item(data: dict[str, Any]) -> PublicCatalogDto:
+    return PublicCatalogDto(
         id=data["id"],
         title=data["title"],
         description=data["description"],
-        type=CatalogTypeEnum(data["type"]),
-        visibility=CatalogVisibilityEnum(data["visibility"]),
-        status=CatalogStatusEnum(data["status"]),
         mediaType=MediaTypeEnum(data["mediaType"]),
-        isOfficial=bool(data["isOfficial"]),
         createdAt=data["createdAt"],
         updatedAt=data["updatedAt"],
     )
 
 
-def parse_catalogs_response(data: Any) -> List[CatalogDto]:
+def parse_catalogs_response(data: Any) -> List[PublicCatalogDto]:
     if not isinstance(data, list):
         raise TypeError("Catalog response must be a list")
 
