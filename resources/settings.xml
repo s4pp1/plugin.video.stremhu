@@ -3,14 +3,48 @@
   <section id="plugin.video.stremhu">
     <category id="general" label="30000">
       <group id="1" label="30100">
+        <setting id="source_token" type="string" label="30130" help="30131" visible="false">
+          <level>0</level>
+          <default />
+        </setting>
+        <setting id="source_login" type="action" label="30120" help="30121">
+          <level>0</level>
+          <data>RunPlugin(plugin://plugin.video.stremhu/source/setup)</data>
+          <dependencies>
+            <dependency type="visible">
+              <condition operator="is" setting="source_token" />
+            </dependency>
+          </dependencies>
+          <control type="button" format="action">
+            <close>true</close>
+          </control>
+        </setting>
         <setting id="source_url" type="string" label="30110" help="30111">
           <level>0</level>
           <default />
+          <enable>false</enable>
           <constraints>
             <allowempty>true</allowempty>
           </constraints>
           <control type="edit" format="string">
             <heading>30110</heading>
+          </control>
+          <dependencies>
+            <dependency type="visible">
+              <condition operator="!is" setting="source_token" />
+            </dependency>
+          </dependencies>
+        </setting>
+        <setting id="source_logout" type="action" label="30140" help="30141">
+          <level>0</level>
+          <data>RunPlugin(plugin://plugin.video.stremhu/source/logout)</data>
+          <dependencies>
+            <dependency type="visible">
+              <condition operator="!is" setting="source_token" />
+            </dependency>
+          </dependencies>
+          <control type="button" format="action">
+            <close>true</close>
           </control>
         </setting>
       </group>

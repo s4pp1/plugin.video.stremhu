@@ -64,13 +64,17 @@ def get_query_arg(name: str) -> Optional[str]:
 def ensure_settings():
     missing = []
     source_url = get_setting("source_url")
+    source_token = get_setting("source_token")
     catalog_token = get_setting("catalog_token")
 
     if not source_url:
         missing.append("URL")
 
+    if not source_token:
+        missing.append("Source Token")
+
     if not catalog_token:
-        missing.append("Token")
+        missing.append("Catalog Token")
 
     if missing:
         message = "Hiányzó kötelező beállítás: {}".format(", ".join(missing))

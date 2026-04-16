@@ -47,6 +47,30 @@ msgctxt "#30221"
 msgid "To use the StremHU addon, you need to install the artifacts for TMDb Bingie Helper."
 msgstr "A StremHU addon használatához telepíteni kell a kiegészítőt a TMDb Bingie Helperbe."
 
+msgctxt "#30120"
+msgid "Login to StremHU Source..."
+msgstr "Bejelentkezés a StremHU Source-ba..."
+
+msgctxt "#30121"
+msgid "Start login process with StremHU Source."
+msgstr "Bejelentkezés folyamatának elindítása a StremHU Source-ba."
+
+msgctxt "#30130"
+msgid "Token"
+msgstr "Token"
+
+msgctxt "#30131"
+msgid "StremHU Source token, which is automatically set during pairing."
+msgstr "A StremHU Source tokenje, amely párosításkor automatikusan beállításra kerül."
+
+msgctxt "#30140"
+msgid "Logout from StremHU Source"
+msgstr "Kijelentkezés a StremHU Source-ról"
+
+msgctxt "#30141"
+msgid "Clear data and logout from the Source."
+msgstr "Adatok törlése és kijelentkezés a Source-ról."
+
 msgctxt "#30300"
 msgid "StremHU Catalog configuration"
 msgstr "StremHU Catalog beállításai"

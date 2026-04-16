@@ -8,19 +8,32 @@ from lib.integrations.source.models import (
     AudioQualityMetaDto,
     AudioSpatialEnum,
     AudioSpatialMetaDto,
+    HealthDto,
     KodiImdbStreamDto,
     KodiImdbStreamsDto,
     LanguageEnum,
     LanguageMetaDto,
+    PairInitDto,
+    PairStatusDto,
     ResolutionEnum,
     ResolutionMetaDto,
     SourceEnum,
     SourceMetaDto,
+    Status,
     TrackerEnum,
     TrackerMetaDto,
     VideoQualityEnum,
     VideoQualityMetaDto,
 )
+
+
+def parse_health_response(data: Any) -> HealthDto:
+    if not isinstance(data, dict):
+        raise TypeError("Health response must be an object")
+
+    return HealthDto(
+        version=data["version"],
+    )
 
 
 def parse_language_meta(data: dict[str, Any]) -> LanguageMetaDto:
@@ -107,4 +120,25 @@ def parse_streams_response(data: Any) -> KodiImdbStreamsDto:
     return KodiImdbStreamsDto(
         streams=[parse_stream_item(raw) for raw in data["streams"]],
         errors=data["errors"],
+    )
+
+
+def parse_pair_init_response(data: Any) -> PairInitDto:
+    if not isinstance(data, dict):
+        raise TypeError("Pair init response must be an object")
+
+    return PairInitDto(
+        userCode=data["userCode"],
+        deviceCode=data["deviceCode"],
+        expiresAt=data["expiresAt"],
+    )
+
+
+def parse_pair_status_response(data: Any) -> PairStatusDto:
+    if not isinstance(data, dict):
+        raise TypeError("Pair status response must be an object")
+
+    return PairStatusDto(
+        status=Status(data["status"]),
+        token=data.get("token", None),
     )
