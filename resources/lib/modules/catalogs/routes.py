@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from lib.common import end_directory_if_needed, ensure_settings, get_query_arg
+from lib.common import end_directory_if_needed, ensure_catalog_settings, get_query_arg
 from lib.context import ADDON, PLUGIN
 from lib.modules.catalogs.presenter import render_widget_catalogs
 from lib.modules.catalogs.service import get_catalogs
@@ -13,7 +13,7 @@ def widget_catalogs():
         end_directory_if_needed()
         return
 
-    if not ensure_settings():
+    if not ensure_catalog_settings():
         ADDON.openSettings()
         end_directory_if_needed()
         return

@@ -5,7 +5,7 @@ from typing import Optional
 import xbmcgui
 import xbmcplugin
 
-from lib.common import ensure_settings, get_query_arg, notification, parse_int
+from lib.common import ensure_source_settings, get_query_arg, notification, parse_int
 from lib.context import PLUGIN
 from lib.integrations.source.models import KodiIntegrationStreamsParametersQuery
 from lib.modules.source.presenter import choose_stream_and_play
@@ -19,7 +19,7 @@ def play_imdb(imdb_id: Optional[str]):
     season = get_query_arg("season")
     episode = get_query_arg("episode")
 
-    if not ensure_settings() or not imdb_id or not title:
+    if not ensure_source_settings() or not imdb_id or not title:
         xbmcplugin.setResolvedUrl(
             PLUGIN.handle,
             False,
