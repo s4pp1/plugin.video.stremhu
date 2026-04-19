@@ -86,6 +86,10 @@ def setup_source():
 
     try:
         pair_init = source_api.init_pair()
+        progress.create(
+            heading=f"{pair_init.userCode} - StremHU Source aktiváló kód",
+            message=f"Látogass el a [B]{source_url}/activate[/B] felületére és add meg a kódot: [B]{pair_init.userCode}[/B]",
+        )
     except Exception:
         xbmcgui.Dialog().notification(
             heading=addon_name,
@@ -101,8 +105,6 @@ def setup_source():
     while not progress.iscanceled():
         progress.update(
             percent=-1,
-            message=f"Látogass el a [B]{source_url}/activate[/B] felületére és add meg az alábbi kódot:\n\n"
-            f"[B]{pair_init.userCode}[/B]",
         )
 
         try:
