@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, List
+from typing import List, Sequence
 
 import xbmcgui
 import xbmcplugin
@@ -8,30 +8,33 @@ import xbmcvfs
 
 from ...common import notification
 from ...context import ADDON, PLUGIN
-from ...integrations.source.models import KodiImdbStreamDto, KodiImdbStreamsDto
+from ...integrations.source.models import (
+    KodiImdbStreamResponse,
+    KodiImdbStreamsResponse,
+)
 
 
 def resolve_resolution_icon(
-    stream: KodiImdbStreamDto,
+    stream: KodiImdbStreamResponse,
 ) -> str:
-    resolution = stream.resolution.value.value
-    icon_path = "{}/resources/media/resolution/{}.png".format(
-        ADDON.getAddonInfo("path"),
-        resolution,
-    )
-
-    if xbmcvfs.exists(icon_path):
-        return icon_path
+    resolutions = [
+        attr.id
+        for attr in stream.media_attributes
+        if attr.preference_id == "resolution"
+    ]
+    if resolutions:
+        resolution = resolutions[0]
+        icon_path = "{}/resources/media/resolution/{}.png".format(
+            ADDON.getAddonInfo("path"),
+            resolution,
+        )
+        if xbmcvfs.exists(icon_path):
+            return icon_path
 
     return ADDON.getAddonInfo("icon")
 
 
-def join_meta_labels(items: list[Any]) -> str:
-    labels = [str(item.label).strip() for item in items if getattr(item, "label", "")]
-    return ", ".join([label for label in labels if label])
-
-
-def join_non_empty_parts(parts: list[str | None]) -> str:
+def join_non_empty_parts(parts: Sequence[str | None]) -> str:
     return ", ".join([part for part in parts if part])
 
 
@@ -39,22 +42,46 @@ def format_seeders(seeders: float) -> str:
     return f"{int(seeders)} seed"
 
 
-def build_stream_label(stream: KodiImdbStreamDto) -> str:
-    tracker_label = f"{stream.tracker.label}"
-    video_qualities = join_meta_labels(stream.videoQualities)
-    languages = join_meta_labels(stream.languages)
+def build_stream_label(stream: KodiImdbStreamResponse) -> str:
+    indexer_name = f"{stream.indexer.name}"
+    video_qualities = ", ".join(
+        [
+            attr.short_name or attr.name
+            for attr in stream.media_attributes
+            if attr.preference_id == "video-quality"
+        ]
+    )
+    languages = ", ".join(
+        [
+            attr.short_name or attr.name
+            for attr in stream.media_attributes
+            if attr.preference_id == "language"
+        ]
+    )
 
-    return join_non_empty_parts([tracker_label, video_qualities, languages])
+    return join_non_empty_parts([indexer_name, video_qualities, languages])
 
 
-def build_stream_label2(stream: KodiImdbStreamDto) -> str:
-    audio_quality = stream.audioQuality.label if stream.audioQuality else None
-    audio_spatial = stream.audioSpatial.label if stream.audioSpatial else None
+def build_stream_label2(stream: KodiImdbStreamResponse) -> str:
+    audio_qualities = ", ".join(
+        [
+            attr.short_name or attr.name
+            for attr in stream.media_attributes
+            if attr.preference_id == "audio-quality"
+        ]
+    )
+    audio_spatials = ", ".join(
+        [
+            attr.short_name or attr.name
+            for attr in stream.media_attributes
+            if attr.preference_id == "audio-spatial"
+        ]
+    )
 
     return join_non_empty_parts(
         [
-            audio_quality,
-            audio_spatial,
+            audio_qualities,
+            audio_spatials,
             format_seeders(stream.seeders),
             stream.size,
         ]
@@ -62,8 +89,7 @@ def build_stream_label2(stream: KodiImdbStreamDto) -> str:
 
 
 def choose_stream_and_play(
-    title: str,
-    stream_information: KodiImdbStreamsDto,
+    stream_information: KodiImdbStreamsResponse,
 ):
 
     if stream_information.errors:

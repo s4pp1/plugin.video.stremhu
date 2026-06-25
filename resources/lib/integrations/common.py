@@ -14,7 +14,7 @@ def plugin_request(
     method: str,
     url: str,
     params: Optional[dict] = None,
-    data: Optional[dict] = None,
+    json: Optional[dict] = None,
 ):
     headers = {
         "Accept": "application/json",
@@ -26,7 +26,7 @@ def plugin_request(
             method=method,
             url=url,
             params=params,
-            data=data,
+            json=json,
             headers=headers,
             timeout=30,
         )
@@ -48,7 +48,7 @@ def plugin_request(
         if status_code == 400:
             message = str(exception)
 
-        log(message)
+        log(f"{message} - Status: {status_code} - Body: {exception.response.text}")
 
         raise ApiError(message)
     except RequestException as exception:

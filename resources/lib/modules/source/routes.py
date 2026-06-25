@@ -7,7 +7,7 @@ import xbmcplugin
 
 from lib.common import ensure_source_settings, get_query_arg, notification, parse_int
 from lib.context import PLUGIN
-from lib.integrations.source.models import KodiIntegrationStreamsParametersQuery
+from lib.integrations.source.models import KodiFindStreamsParametersQuery
 from lib.modules.source.presenter import choose_stream_and_play
 from lib.modules.source.service import get_stream_information
 
@@ -27,13 +27,13 @@ def play_imdb(imdb_id: Optional[str]):
         )
         return
 
-    series: Optional[KodiIntegrationStreamsParametersQuery] = None
+    series: Optional[KodiFindStreamsParametersQuery] = None
 
     season_number = parse_int(season)
     episode_number = parse_int(episode)
 
     if season_number is not None or episode_number is not None:
-        series = KodiIntegrationStreamsParametersQuery(
+        series = KodiFindStreamsParametersQuery(
             season=season_number,
             episode=episode_number,
         )
@@ -45,7 +45,6 @@ def play_imdb(imdb_id: Optional[str]):
         )
 
         choose_stream_and_play(
-            title=title,
             stream_information=stream_information,
         )
     except Exception as error:

@@ -1,16 +1,15 @@
 from __future__ import annotations
 
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
 from typing import Optional
 
 from lib.integrations.source.common import get_path_with_source_token, source_request
 from lib.integrations.source.models import (
-    HealthDto,
-    KodiImdbStreamsDto,
-    KodiIntegrationStreamsParametersQuery,
-    PairInitDto,
-    PairStatusDto,
-    PairStatusRequestDto,
+    KodiFindStreamsParametersQuery,
+    KodiImdbStreamsResponse,
+    PairInitResponse,
+    PairStatusResponse,
+    SuccessResponse,
 )
 from lib.integrations.source.parsers import (
     parse_health_response,
@@ -20,7 +19,12 @@ from lib.integrations.source.parsers import (
 )
 
 
-def get_health() -> HealthDto:
+@dataclass
+class PairStatusRequest:
+    device_code: str
+
+
+def get_health() -> SuccessResponse:
     path = "/health"
 
     data = source_request(
@@ -34,8 +38,8 @@ def get_health() -> HealthDto:
 
 def get_streams(
     imdb_id: str,
-    series: Optional[KodiIntegrationStreamsParametersQuery] = None,
-) -> KodiImdbStreamsDto:
+    series: Optional[KodiFindStreamsParametersQuery] = None,
+) -> KodiImdbStreamsResponse:
 
     path = get_path_with_source_token(f"/kodi/imdb/{imdb_id}/streams")
 
@@ -51,7 +55,7 @@ def get_streams(
     return parsed
 
 
-def init_pair() -> PairInitDto:
+def init_pair() -> PairInitResponse:
     path = "/auth/pair/init"
 
     data = source_request(
@@ -63,15 +67,12 @@ def init_pair() -> PairInitDto:
     return parsed
 
 
-def get_pair_status(data: PairStatusRequestDto) -> PairStatusDto:
-    path = "/auth/pair/status"
-
-    data_dict = asdict(data)
+def get_pair_status(data: PairStatusRequest) -> PairStatusResponse:
+    path = f"/auth/pair/status/{data.device_code}"
 
     data = source_request(
-        method="POST",
+        method="GET",
         path=path,
-        data=data_dict,
     )
 
     parsed = parse_pair_status_response(data)

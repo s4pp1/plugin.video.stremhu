@@ -9,7 +9,7 @@ def catalog_request(
     method: str,
     path: str,
     params: Optional[dict] = None,
-    data: Optional[dict] = None,
+    json: Optional[dict] = None,
 ):
     catalog_token = get_setting("catalog_token")
 
@@ -22,5 +22,5 @@ def catalog_request(
         method=method,
         url=url,
         params=params,
-        data=data,
+        json=json,
     )

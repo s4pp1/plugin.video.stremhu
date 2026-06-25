@@ -9,10 +9,9 @@ import xbmcgui
 from lib.common import ADDON, log
 from lib.integrations.source import source_api
 from lib.integrations.source.models import (
-    KodiIntegrationStreamsParametersQuery,
-    PairStatusRequestDto,
-    Status,
+    KodiFindStreamsParametersQuery,
 )
+from lib.integrations.source.source_api import PairStatusRequest
 
 
 def decode_route_label(value: Optional[str]) -> Optional[str]:
@@ -24,7 +23,7 @@ def decode_route_label(value: Optional[str]) -> Optional[str]:
 
 def get_stream_information(
     imdb_id: str,
-    series: Optional[KodiIntegrationStreamsParametersQuery] = None,
+    series: Optional[KodiFindStreamsParametersQuery] = None,
 ):
     try:
         response = source_api.get_streams(
@@ -87,8 +86,8 @@ def setup_source():
     try:
         pair_init = source_api.init_pair()
         progress.create(
-            heading=f"{pair_init.userCode} - StremHU Source aktiváló kód",
-            message=f"Látogass el a [B]{source_url}/activate[/B] felületére és add meg a kódot: [B]{pair_init.userCode}[/B]",
+            heading=f"{pair_init.user_code} - StremHU Source aktiváló kód",
+            message=f"Látogass el a [B]{source_url}/activate[/B] felületére és add meg a kódot: [B]{pair_init.user_code}[/B]",
         )
     except Exception:
         xbmcgui.Dialog().notification(
@@ -108,19 +107,19 @@ def setup_source():
         )
 
         try:
-            status_request = PairStatusRequestDto(
-                deviceCode=pair_init.deviceCode,
+            status_request = PairStatusRequest(
+                device_code=pair_init.device_code,
             )
             status_response = source_api.get_pair_status(
                 data=status_request,
             )
 
-            if status_response.status == Status.linked:
+            if status_response.status == "linked":
                 success = True
                 token = status_response.token
                 break
 
-            if status_response.status == Status.expired:
+            if status_response.status == "expired":
                 xbmcgui.Dialog().notification(
                     heading=addon_name,
                     message="A összekapcsolási kód lejárt, próbáld újra",

@@ -2,143 +2,86 @@ from __future__ import annotations
 
 from typing import Any
 
-from lib.common import log
 from lib.integrations.source.models import (
-    AudioQualityEnum,
-    AudioQualityMetaDto,
-    AudioSpatialEnum,
-    AudioSpatialMetaDto,
-    HealthDto,
-    KodiImdbStreamDto,
-    KodiImdbStreamsDto,
-    LanguageEnum,
-    LanguageMetaDto,
-    PairInitDto,
-    PairStatusDto,
-    ResolutionEnum,
-    ResolutionMetaDto,
-    SourceEnum,
-    SourceMetaDto,
-    Status,
-    TrackerEnum,
-    TrackerMetaDto,
-    VideoQualityEnum,
-    VideoQualityMetaDto,
+    AttributeResponse,
+    IndexerDefinitionResponse,
+    KodiImdbStreamResponse,
+    KodiImdbStreamsResponse,
+    PairInitResponse,
+    PairStatusResponse,
+    SuccessResponse,
 )
 
 
-def parse_health_response(data: Any) -> HealthDto:
+def parse_health_response(data: Any) -> SuccessResponse:
     if not isinstance(data, dict):
         raise TypeError("Health response must be an object")
 
-    return HealthDto(
-        version=data["version"],
+    return SuccessResponse(
+        success=data["success"],
+        message=data.get("message"),
     )
 
 
-def parse_language_meta(data: dict[str, Any]) -> LanguageMetaDto:
-    return LanguageMetaDto(
-        value=LanguageEnum(data["value"]),
-        label=data["label"],
-    )
-
-
-def parse_resolution_meta(data: dict[str, Any]) -> ResolutionMetaDto:
-    return ResolutionMetaDto(
-        value=ResolutionEnum(data["value"]),
-        label=data["label"],
-    )
-
-
-def parse_video_quality_meta(data: dict[str, Any]) -> VideoQualityMetaDto:
-    return VideoQualityMetaDto(
-        value=VideoQualityEnum(data["value"]),
-        label=data["label"],
-    )
-
-
-def parse_audio_quality_meta(data: dict[str, Any]) -> AudioQualityMetaDto:
-    return AudioQualityMetaDto(
-        value=AudioQualityEnum(data["value"]),
-        label=data["label"],
-    )
-
-
-def parse_audio_spatial_meta(data: dict[str, Any]) -> AudioSpatialMetaDto:
-    return AudioSpatialMetaDto(
-        value=AudioSpatialEnum(data["value"]),
-        label=data["label"],
-    )
-
-
-def parse_source_meta(data: dict[str, Any]) -> SourceMetaDto:
-    return SourceMetaDto(
-        value=SourceEnum(data["value"]),
-        label=data["label"],
-    )
-
-
-def parse_tracker_meta(data: dict[str, Any]) -> TrackerMetaDto:
-    return TrackerMetaDto(
-        value=TrackerEnum(data["value"]),
-        label=data["label"],
-        requiresFullDownload=data["requiresFullDownload"],
+def parse_indexer_definition(data: dict[str, Any]) -> IndexerDefinitionResponse:
+    return IndexerDefinitionResponse(
+        id=data["id"],
+        name=data["name"],
         url=data["url"],
-        detailsPath=data["detailsPath"],
+        details_path=data["detailsPath"],
+        requires_full_download=data["requiresFullDownload"],
     )
 
 
-def parse_stream_item(data: dict[str, Any]) -> KodiImdbStreamDto:
-    log("{}".format(data))
+def parse_attribute_response(data: dict[str, Any]) -> AttributeResponse:
+    return AttributeResponse(
+        id=data["id"],
+        name=data["name"],
+        short_name=data.get("shortName"),
+        preference_id=data.get("preferenceId"),
+    )
 
-    return KodiImdbStreamDto(
-        torrentName=data["torrentName"],
-        fileName=data["fileName"],
+
+def parse_stream_item(data: dict[str, Any]) -> KodiImdbStreamResponse:
+    return KodiImdbStreamResponse(
+        torrent_name=data["torrentName"],
+        file_name=data["fileName"],
         seeders=data["seeders"],
         size=data["size"],
-        tracker=parse_tracker_meta(data["tracker"]),
-        languages=[parse_language_meta(raw) for raw in data["languages"]],
-        resolution=parse_resolution_meta(data["resolution"]),
-        videoQualities=[
-            parse_video_quality_meta(raw) for raw in data["videoQualities"]
+        indexer=parse_indexer_definition(data["indexer"]),
+        media_attributes=[
+            parse_attribute_response(attr) for attr in data["mediaAttributes"]
         ],
-        source=parse_source_meta(data["source"]),
         url=data["url"],
-        audioQuality=parse_audio_quality_meta(data["audioQuality"])
-        if data.get("audioQuality") is not None
-        else None,
-        audioSpatial=parse_audio_spatial_meta(data["audioSpatial"])
-        if data.get("audioSpatial") is not None
-        else None,
     )
 
 
-def parse_streams_response(data: Any) -> KodiImdbStreamsDto:
+def parse_streams_response(data: Any) -> KodiImdbStreamsResponse:
     if not isinstance(data, dict):
         raise TypeError("Streams response must be an object")
 
-    return KodiImdbStreamsDto(
+    return KodiImdbStreamsResponse(
         streams=[parse_stream_item(raw) for raw in data["streams"]],
         errors=data["errors"],
     )
 
 
-def parse_pair_init_response(data: Any) -> PairInitDto:
+def parse_pair_init_response(data: Any) -> PairInitResponse:
     if not isinstance(data, dict):
         raise TypeError("Pair init response must be an object")
 
-    return PairInitDto(
-        userCode=data["userCode"],
-        deviceCode=data["deviceCode"],
-        expiresAt=data["expiresAt"],
+    return PairInitResponse(
+        user_code=data["userCode"],
+        device_code=data["deviceCode"],
+        expires_at=data["expiresAt"],
     )
 
 
-def parse_pair_status_response(data: Any) -> PairStatusDto:
+def parse_pair_status_response(data: Any) -> PairStatusResponse:
     if not isinstance(data, dict):
         raise TypeError("Pair status response must be an object")
 
-    return PairStatusDto(
-        status=Status(data["status"]),
+    return PairStatusResponse(
+        status=data["status"],
         token=data.get("token", None),
     )

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SPEC_URL="http://localhost:3000/api/docs-json"
+SPEC_URL="https://localhost:7070/api/openapi.json"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="${SCRIPT_DIR}"
@@ -22,13 +22,15 @@ mkdir -p "$(dirname "${OUTPUT_PATH}")"
 
 "${PYTHON_BIN}" -m datamodel_code_generator \
   --url "${SPEC_URL}" \
+  --http-ignore-tls \
   --input-file-type openapi \
   --output "${OUTPUT_PATH}" \
   --target-python-version 3.8 \
   --output-model-type dataclasses.dataclass \
   --disable-timestamp \
+  --snake-case-field \
   --reuse-model \
   --openapi-scopes schemas parameters paths \
   --use-operation-id-as-name
 
-echo "Modellek generalva: ${OUTPUT_FILE}"
+echo "Modellek generalva: ${OUTPUT_PATH}"

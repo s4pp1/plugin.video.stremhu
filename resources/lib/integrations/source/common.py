@@ -8,7 +8,7 @@ def source_request(
     method: str,
     path: str,
     params: Optional[dict] = None,
-    data: Optional[dict] = None,
+    json: Optional[dict] = None,
 ):
     base_url = get_setting("source_url").rstrip("/")
     normalized_path = path.lstrip("/")
@@ -19,7 +19,7 @@ def source_request(
         method=method,
         url=url,
         params=params,
-        data=data,
+        json=json,
     )
 
 
